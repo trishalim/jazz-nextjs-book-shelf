@@ -2,13 +2,18 @@
 
 import { createJazzReactApp, useDemoAuth, DemoAuthBasicUI } from "jazz-react";
 import { Nav } from "@/components/Nav";
+import { JazzAccount } from "@/schema";
 
-const Jazz = createJazzReactApp();
+// const Jazz = createJazzReactApp();
+const Jazz = createJazzReactApp({
+  AccountSchema: JazzAccount,
+});
 
 export const { useAccount, useCoState } = Jazz;
 
 export function JazzAndAuth({ children }: { children: React.ReactNode }) {
   const [auth, authState] = useDemoAuth();
+
   return (
     <>
       <Jazz.Provider
